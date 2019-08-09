@@ -124,7 +124,9 @@ class FrontSpecialPrice extends Price
         $priceStoreId = $price[Store::STORE_ID];
         if (($priceStoreId == Store::DEFAULT_STORE_ID || $product->getStoreId() == $priceStoreId)
             && $price[SpecialPriceInterface::PRICE_FROM] == $product->getSpecialFromDate()
-            && $price[SpecialPriceInterface::PRICE_TO] == $product->getSpecialToDate()) {
+            && $price[SpecialPriceInterface::PRICE_TO] == $product->getSpecialToDate()
+            && $price['value'] !== null
+        ) {
             return true;
         }
 
